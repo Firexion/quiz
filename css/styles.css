@@ -1,0 +1,17 @@
+.progress {
+	clear: both;
+}
+
+#question-title{
+	"text-align: left;
+	float: left;
+}
+
+#question-number{
+	text-align: left;
+	float: left;
+}
+
+.answers {
+	margin-right: 7px;
+}

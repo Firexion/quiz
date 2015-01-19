@@ -1,0 +1,23 @@
+// data
+var allQuestions = [
+  {
+    question: "Who is Prime Minister of the United Kingdom?", 
+    choices: ["David Cameron", "Gordon Brown", "Winston Churchill", "Tony Blair"], 
+    correctAnswer:"0"
+  },
+  {
+    question: "What is the name of Atticus's hound?", 
+    choices: ["Meara", "Kai", "Oberron", "Morrigan"], 
+    correctAnswer:"2"
+  },
+  {
+    question: "What is the name of Dresden's dog?", 
+    choices: ["Harry", "Kai", "Oberron", "Mouse"], 
+    correctAnswer:"3"
+  },
+  {
+    question: "What is the name of Atticus's mentor?", 
+    choices: ["Meara", "Owen", "Oberron", "Morrigan"], 
+    correctAnswer:"1"
+  }
+];
