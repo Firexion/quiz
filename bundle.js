@@ -17,6 +17,7 @@ var React = require('react');
 
 var Question = React.createClass({displayName: "Question",
   answer: function(answer) {
+    this.refs["answer-" + answer].getDOMNode().blur();
   	this.props.answerQuestion(answer);
   },
 
@@ -26,13 +27,17 @@ var Question = React.createClass({displayName: "Question",
         React.createElement("h3", {id: "question"}, this.props.question.question), 
         React.createElement("form", {className: "questionForm"}, 
 	      React.createElement("input", {type: "button", className: "btn btn-default answers", id: "answer-0", 
-	      	value: this.props.question.choices[0], onClick: this.answer.bind(null, '0')}), 
+          ref: "answer-0", value: this.props.question.choices[0], 
+	      	onClick: this.answer.bind(null, '0')}), 
 	      React.createElement("input", {type: "button", className: "btn btn-default answers", id: "answer-1", 
-	      	value: this.props.question.choices[1], onClick: this.answer.bind(null, '1')}), 
+	      	ref: "answer-1", value: this.props.question.choices[1], 
+          onClick: this.answer.bind(null, '1')}), 
 	      React.createElement("input", {type: "button", className: "btn btn-default answers", id: "answer-2", 
-	      	value: this.props.question.choices[2], onClick: this.answer.bind(null, '2')}), 
+	      	ref: "answer-2", value: this.props.question.choices[2], 
+          onClick: this.answer.bind(null, '2')}), 
 	      React.createElement("input", {type: "button", className: "btn btn-default answers", id: "answer-3", 
-	      	value: this.props.question.choices[3], onClick: this.answer.bind(null, '3')})
+	      	ref: "answer-3", value: this.props.question.choices[3], 
+          onClick: this.answer.bind(null, '3')})
       	)
       )
     );
@@ -80,6 +85,7 @@ var QuizApp = React.createClass({displayName: "QuizApp",
   },
 
   answerQuestion: function(answer) {
+
     var progress = (this.state.questionNum + 1) / this.state.questions.length * 100;
     var answers = this.state.answers;
     var numCorrect = this.state.numCorrect;    
@@ -110,7 +116,6 @@ var QuizApp = React.createClass({displayName: "QuizApp",
     var progress = (this.state.questionNum - 1) / this.state.questions.length * 100;
     var numCorrect = this.state.numCorrect;    
     var questionNum = this.state.questionNum - 1;
-    var finished = this.state.finished;
     var displayPrevious = this.state.displayPrevious;
 
     // rollback numCorrect if the answer was correct
@@ -121,13 +126,14 @@ var QuizApp = React.createClass({displayName: "QuizApp",
     // if returning to first question, remove Previous button
     if (questionNum === 0) {
       displayPrevious = 'none';
+    } else {
+      this.refs.back.getDOMNode().blur();
     }
 
     this.setState({
       progress: progress,
       numCorrect: numCorrect,
       questionNum: questionNum,
-      finished: finished,
       displayPrevious: displayPrevious
     });
   },
@@ -148,7 +154,15 @@ var QuizApp = React.createClass({displayName: "QuizApp",
           React.createElement("h1", {id: "question-title"}, "Question ", this.state.questionNum + 1), 
           React.createElement(Progress, {progress: this.state.progress}), 
           React.createElement(Question, {question: this.state.questions[this.state.questionNum], answerQuestion: this.answerQuestion}), 
-          React.createElement("button", {style: {display: this.state.displayPrevious}, type: "button", className: "btn btn-warning", id: "back", onClick: this.previous}, "Return to Previous Question")
+          React.createElement("button", {
+            style: {display: this.state.displayPrevious}, 
+            type: "button", 
+            className: "btn btn-warning", 
+            id: "back", 
+            ref: "back", 
+            onClick: this.previous}, 
+            "Return to Previous Question"
+          )
         )
       );
     }

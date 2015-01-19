@@ -37,6 +37,7 @@ var QuizApp = React.createClass({
   },
 
   answerQuestion: function(answer) {
+
     var progress = (this.state.questionNum + 1) / this.state.questions.length * 100;
     var answers = this.state.answers;
     var numCorrect = this.state.numCorrect;    
@@ -67,7 +68,6 @@ var QuizApp = React.createClass({
     var progress = (this.state.questionNum - 1) / this.state.questions.length * 100;
     var numCorrect = this.state.numCorrect;    
     var questionNum = this.state.questionNum - 1;
-    var finished = this.state.finished;
     var displayPrevious = this.state.displayPrevious;
 
     // rollback numCorrect if the answer was correct
@@ -78,13 +78,14 @@ var QuizApp = React.createClass({
     // if returning to first question, remove Previous button
     if (questionNum === 0) {
       displayPrevious = 'none';
+    } else {
+      this.refs.back.getDOMNode().blur();
     }
 
     this.setState({
       progress: progress,
       numCorrect: numCorrect,
       questionNum: questionNum,
-      finished: finished,
       displayPrevious: displayPrevious
     });
   },
@@ -105,7 +106,15 @@ var QuizApp = React.createClass({
           <h1 id='question-title'>Question {this.state.questionNum + 1}</h1>
           <Progress progress={this.state.progress}/>
           <Question question={this.state.questions[this.state.questionNum]} answerQuestion={this.answerQuestion}/>
-          <button style={{display: this.state.displayPrevious}} type='button' className='btn btn-warning' id='back' onClick={this.previous} >Return to Previous Question</button>          
+          <button 
+            style={{display: this.state.displayPrevious}}
+            type='button'
+            className='btn btn-warning'
+            id='back'
+            ref='back'
+            onClick={this.previous}>
+            Return to Previous Question
+          </button>
         </div>
       );
     }

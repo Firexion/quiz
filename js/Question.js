@@ -2,6 +2,7 @@ var React = require('react');
 
 var Question = React.createClass({
   answer: function(answer) {
+    this.refs["answer-" + answer].getDOMNode().blur();
   	this.props.answerQuestion(answer);
   },
 
@@ -11,13 +12,17 @@ var Question = React.createClass({
         <h3 id='question'>{this.props.question.question}</h3>
         <form className="questionForm">
 	      <input type='button' className='btn btn-default answers' id='answer-0' 
-	      	value={this.props.question.choices[0]} onClick={this.answer.bind(null, '0')}/>
+          ref='answer-0' value={this.props.question.choices[0]}
+	      	onClick={this.answer.bind(null, '0')}/>
 	      <input type='button' className='btn btn-default answers' id='answer-1' 
-	      	value={this.props.question.choices[1]} onClick={this.answer.bind(null, '1')}/>
+	      	ref='answer-1' value={this.props.question.choices[1]}
+          onClick={this.answer.bind(null, '1')}/>
 	      <input type='button' className='btn btn-default answers' id='answer-2' 
-	      	value={this.props.question.choices[2]} onClick={this.answer.bind(null, '2')}/>
+	      	ref='answer-2' value={this.props.question.choices[2]}
+          onClick={this.answer.bind(null, '2')}/>
 	      <input type='button' className='btn btn-default answers' id='answer-3' 
-	      	value={this.props.question.choices[3]} onClick={this.answer.bind(null, '3')}/>
+	      	ref='answer-3' value={this.props.question.choices[3]}
+          onClick={this.answer.bind(null, '3')}/>
       	</form>
       </div>
     );
