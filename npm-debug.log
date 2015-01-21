@@ -1,0 +1,58 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'react/Addons' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.35
+4 verbose node symlink /usr/bin/node
+5 verbose cache add [ 'react/Addons', null ]
+6 verbose cache add name=undefined spec="react/Addons" args=["react/Addons",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'react/Addons',
+7 verbose parsed url   path: 'react/Addons',
+7 verbose parsed url   href: 'react/Addons' }
+8 silly lockFile 2883de53-react-Addons react/Addons
+9 verbose lock react/Addons /home/sam/.npm/2883de53-react-Addons.lock
+10 info maybeGithub Attempting react/Addons from git://github.com/react/Addons
+11 silly lockFile ff013213-git-github-com-react-Addons git://github.com/react/Addons
+12 verbose lock git://github.com/react/Addons /home/sam/.npm/ff013213-git-github-com-react-Addons.lock
+13 verbose addRemoteGit [ 'git://github.com/react/Addons', 'master' ]
+14 verbose git clone git://github.com/react/Addons Cloning into bare repository '/home/sam/.npm/_git-remotes/git-github-com-react-Addons-ff013213'...
+14 verbose git clone git://github.com/react/Addons fatal: remote error:
+14 verbose git clone git://github.com/react/Addons   Repository not found.
+15 silly lockFile ff013213-git-github-com-react-Addons git://github.com/react/Addons
+16 silly lockFile ff013213-git-github-com-react-Addons git://github.com/react/Addons
+17 info maybeGithub Attempting react/Addons from git+ssh://git@github.com:react/Addons
+18 silly lockFile e0fb10de-git-github-com-react-Addons git@github.com:react/Addons
+19 verbose lock git@github.com:react/Addons /home/sam/.npm/e0fb10de-git-github-com-react-Addons.lock
+20 verbose addRemoteGit [ 'git@github.com:react/Addons', 'master' ]
+21 error git clone git@github.com:react/Addons Cloning into bare repository '/home/sam/.npm/_git-remotes/git-github-com-react-Addons-e0fb10de'...
+21 error git clone git@github.com:react/Addons Permission denied (publickey).
+21 error git clone git@github.com:react/Addons fatal: Could not read from remote repository.
+21 error git clone git@github.com:react/Addons
+21 error git clone git@github.com:react/Addons Please make sure you have the correct access rights
+21 error git clone git@github.com:react/Addons and the repository exists.
+22 silly lockFile e0fb10de-git-github-com-react-Addons git@github.com:react/Addons
+23 silly lockFile e0fb10de-git-github-com-react-Addons git@github.com:react/Addons
+24 silly lockFile 2883de53-react-Addons react/Addons
+25 silly lockFile 2883de53-react-Addons react/Addons
+26 error addLocal Could not install react/Addons
+27 error Error: ENOENT, stat 'react/Addons'
+28 error If you need help, you may report this *entire* log,
+28 error including the npm and node versions, at:
+28 error     <http://github.com/npm/npm/issues>
+29 error System Linux 3.13.0-44-generic
+30 error command "/usr/bin/node" "/usr/bin/npm" "install" "react/Addons"
+31 error cwd /home/sam/workspace/quiz
+32 error node -v v0.10.35
+33 error npm -v 1.4.28
+34 error path react/Addons
+35 error code ENOENT
+36 error errno 34
+37 verbose exit [ 34, true ]

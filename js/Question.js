@@ -1,28 +1,28 @@
 var React = require('react');
+var Answer = require('./Answer.js');
 
 var Question = React.createClass({
   answer: function(answer) {
-    this.refs["answer-" + answer].getDOMNode().blur();
   	this.props.answerQuestion(answer);
   },
 
   render: function() {
+    var self = this;
+    var answerNodes = [0, 1, 2, 3].map(function (num) {
+      return (
+        <Answer 
+          num={num}
+          answer={self.props.question.choices[num]} 
+          isChosen={self.props.highlight === num}
+          answerQuestion={self.answer}/>
+      );
+    });
+
     return (
       <div className="question">
         <h3 id='question'>{this.props.question.question}</h3>
         <form className="questionForm">
-	      <input type='button' className='btn btn-default answers' id='answer-0' 
-          ref='answer-0' value={this.props.question.choices[0]}
-	      	onClick={this.answer.bind(null, '0')}/>
-	      <input type='button' className='btn btn-default answers' id='answer-1' 
-	      	ref='answer-1' value={this.props.question.choices[1]}
-          onClick={this.answer.bind(null, '1')}/>
-	      <input type='button' className='btn btn-default answers' id='answer-2' 
-	      	ref='answer-2' value={this.props.question.choices[2]}
-          onClick={this.answer.bind(null, '2')}/>
-	      <input type='button' className='btn btn-default answers' id='answer-3' 
-	      	ref='answer-3' value={this.props.question.choices[3]}
-          onClick={this.answer.bind(null, '3')}/>
+	         {answerNodes}
       	</form>
       </div>
     );

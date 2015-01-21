@@ -105,7 +105,10 @@ var QuizApp = React.createClass({
         <div className="QuizApp">
           <h1 id='question-title'>Question {this.state.questionNum + 1}</h1>
           <Progress progress={this.state.progress}/>
-          <Question question={this.state.questions[this.state.questionNum]} answerQuestion={this.answerQuestion}/>
+          <Question 
+            highlight={this.state.answers[this.state.questionNum]}
+            question={this.state.questions[this.state.questionNum]}
+            answerQuestion={this.answerQuestion}/>
           <button 
             style={{display: this.state.displayPrevious}}
             type='button'
