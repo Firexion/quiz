@@ -3,8 +3,8 @@ var React = require('react/addons');
 
 var Answer = React.createClass({displayName: "Answer",
   answer: function(answer) {
-    this.refs['answer' + answer].getDOMNode().blur();
-  	this.props.answerQuestion(answer);
+    this.refs.answer.getDOMNode().blur();
+  	this.props.answerQuestion(answer.toString());
   },
 
   render: function() {
@@ -18,7 +18,7 @@ var Answer = React.createClass({displayName: "Answer",
 
     return (
       React.createElement("input", {type: "button", className: classes, 
-        value: this.props.answer, ref: 'answer' + this.props.num, 
+        value: this.props.answer, ref: "answer", 
       	onClick: this.answer.bind(null, this.props.num)})
     );
   }
@@ -55,7 +55,7 @@ var Question = React.createClass({displayName: "Question",
         React.createElement(Answer, {
           num: num, 
           answer: self.props.question.choices[num], 
-          isChosen: self.props.highlight === num, 
+          isChosen: self.props.highlight === num.toString(), 
           answerQuestion: self.answer})
       );
     });

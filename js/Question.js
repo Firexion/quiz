@@ -13,7 +13,7 @@ var Question = React.createClass({
         <Answer 
           num={num}
           answer={self.props.question.choices[num]} 
-          isChosen={self.props.highlight === num}
+          isChosen={self.props.highlight === num.toString()}
           answerQuestion={self.answer}/>
       );
     });

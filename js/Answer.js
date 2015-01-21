@@ -2,8 +2,8 @@ var React = require('react/addons');
 
 var Answer = React.createClass({
   answer: function(answer) {
-    this.refs['answer' + answer].getDOMNode().blur();
-  	this.props.answerQuestion(answer);
+    this.refs.answer.getDOMNode().blur();
+  	this.props.answerQuestion(answer.toString());
   },
 
   render: function() {
@@ -17,7 +17,7 @@ var Answer = React.createClass({
 
     return (
       <input type='button' className={classes}
-        value={this.props.answer} ref={'answer' + this.props.num}
+        value={this.props.answer} ref='answer'
       	onClick={this.answer.bind(null, this.props.num)}/>
     );
   }
